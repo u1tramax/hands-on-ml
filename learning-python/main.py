@@ -10,7 +10,10 @@ exercises but still serve as representative functions.
 """
 
 def copyDict(dict):
-    pass
+    dict_copy = {}
+    for k, v in dict.items():
+        dict_copy[k] = v
+    return dict_copy
 
 """
 Dictionary tools: Write a function called addDict(dict1, dict2) that computes the union (i.e.,
