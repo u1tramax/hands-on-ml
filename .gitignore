@@ -181,3 +181,4 @@ cython_debug/
 .cursorindexingignore
 /stepik-ml-course
 /makemore
+hands-on-ml/data/cifar-10-python.tar.gz
