@@ -1,14 +1,17 @@
-from typing import List
+def apply_weight_decay(parameters: list[list[float]], gradients: list[list[float]], 
+                       lr: float, weight_decay: float, apply_to_all: list[bool]) -> list[list[float]]:
+    result = []
+    for params, grads in zip(parameters, gradients):
+        for param, grad in zip(params, grads):
+            new_param = param - lr * (grad + weight_decay * param)
+            result.append(new_param)
+    return result
 
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        save = {}
-        for i in range(len(nums)):
-            if target - nums[i] in save:
-                return [save[target - nums[i]], i]
-            save[nums[i]] = i
-        return [0, 1]
-
-nums = [2,5,5,11]
-target = 10
-print(Solution().twoSum(nums, target))
+parameters=[[1.0, 2.0]]
+gradients=[[0.1, 0.2]]
+lr=0.1
+weight_decay=0.01
+apply_to_all=[True]
+print(
+    apply_weight_decay(parameters, gradients, lr, weight_decay, apply_to_all)
+)
